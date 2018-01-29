@@ -30,6 +30,9 @@ NSString *name = [SHValue value:jsonDict][@"data"][2].string;
 // There's our name
 ```
 
+And don't worry about the access to cross-border issues. It's done for you automatically and safely.
+
+
 The string perproty is nullable (Optional), stringValue is Non-optional string.
 Even if there is no value, the stringValue will return "".
 It also supports array, dictionary and number, optional and non-optional.
