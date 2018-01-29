@@ -10,13 +10,13 @@ The code would look like this:
 ```Objective-C
 NSDictionary *jsonDict = @{@"data": @[@{}, @{}, @{@"name": @"A"}]};
 if ([jsonDict isKindOfClass:[NSDictionary class]]) {
-if ([jsonDict[@"data"] isKindOfClass:[NSArray class]]) {
-NSArray *array = jsonDict[@"data"];
-if (array.count > 2) {
-NSString *name = array[2];
-// Finally we got the name
-}
-}
+    if ([jsonDict[@"data"] isKindOfClass:[NSArray class]]) {
+        NSArray *array = jsonDict[@"data"];
+        if (array.count > 2) {
+            NSString *name = array[2];
+            // Finally we got the name
+        }
+    }
 }
 ```
 
@@ -32,6 +32,8 @@ NSString *name = [SHValue value:jsonDict][@"data"][2].string;
 
 The string perproty is nullable (Optional), stringValue is Non-optional string.
 Even if there is no value, the stringValue will return "".
+It also supports array, dictionary and number, optional and non-optional.
+
 
 ## Requirements
 
