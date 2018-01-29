@@ -29,6 +29,6 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "9.0"
 
   s.source       = { :git => "https://github.com/shenhai193/SHValue.git", :tag => "#{s.version}" }
-  s.source_files = "Source/**/*.{h,m}"
+  s.source_files = "Source/*.{h,m}"
 
 end
