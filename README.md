@@ -28,9 +28,11 @@ With SHValue all you have to do is:
 NSDictionary *jsonDict = @{@"data": @[@{}, @{}, @{@"name": @"A"}]};
 NSString *name = [SHValue value:jsonDict][@"data"][2].string;
 // There's our name
-```
 
-And don't worry about the access to cross-border issues. It's done for you automatically and safely.
+NSString *str = [SHValue value:jsonDict][@"a"][@"b"][@"c"][100].string;
+// str is nil, but it won't crash.
+```
+Don't worry about the access to cross-border issues. It's done for you automatically and safely.
 
 
 The string perproty is nullable (Optional), stringValue is Non-optional string.
