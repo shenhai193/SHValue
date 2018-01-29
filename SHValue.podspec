@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.summary      = "The safe way to deal with JSON data in Objective-C."
   s.homepage     = "https://github.com/shenhai193/SHValue"
   s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.author             = { "Charles Zou" => "shenhai.cpp@icloud.com" }
+  s.author       = { "Charles Zou" => "shenhai.cpp@icloud.com" }
 
   s.requires_arc = true
   s.osx.deployment_target = "10.9"
