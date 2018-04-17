@@ -35,7 +35,6 @@
     return [SHValue new];
 }
 
-// ignore
 - (void)setObject:(id)obj atIndexedSubscript:(NSUInteger)idx {}
 
 - (instancetype)objectForKeyedSubscript:(id <NSCopying>)key {
@@ -47,59 +46,50 @@
     return [SHValue new];
 }
 
-// ignore
 - (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key {}
 
 
+
 // MARK: - Array
-- (NSArray<SHValue *> *)array {
+- (NSArray<id> *)array {
     if ([self.value isKindOfClass:[NSArray class]]) {
         
-        NSArray *array = [self.value copy];
-        [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            obj = [SHValue value:obj];
-        }];
-        return array;
-    }
-    return nil;
-}
-
-- (NSArray<SHValue *> *)arrayValue {
-    
-    NSArray<SHValue *> *array = [self array];
-    return array ? : @[];
-}
-
-- (NSArray<id> *)arrayObject {
-    if ([self.value isKindOfClass:[NSArray class]]) {
+        //        NSArray *array = [self.value copy];
+        //        [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //            obj = [SHValue value:obj];
+        //        }];
+        //        return array;
         return self.value;
     }
     return nil;
 }
 
-// MARK: - Dictionary
-- (NSDictionary<NSString *, SHValue *> *)dictionary {
-    if ([self.value isKindOfClass:[NSDictionary<NSString *, SHValue *> class]]) {
-        NSDictionary *dictionary = [self.value copy];
-        [dictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            obj = [SHValue value:obj];
-        }];
-        return dictionary;
-    }
-    return nil;
-}
-
-- (NSDictionary<NSString *, SHValue *> *)dictionaryValue {
+- (NSArray<id> *)arrayValue {
     
-    NSDictionary<NSString *, SHValue *> *dictionary = [self dictionary];
-    return dictionary ? : @{};
+    NSArray<id> *array = [self array];
+    return array ? : @[];
 }
 
-- (NSDictionary<NSString *, id> *)dictionaryObject {
+
+// MARK: - Dictionary
+- (NSDictionary<NSString *, id> *)dictionary {
+    //    if ([self.value isKindOfClass:[NSDictionary<NSString *, SHValue *> class]]) {
+    //        NSDictionary *dictionary = [self.value copy];
+    //        [dictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    //            obj = [SHValue value:obj];
+    //        }];
+    //        return dictionary;
+    //    }
     if ([self.value isKindOfClass:[NSDictionary<NSString *, id> class]]) {
         return self.value;
     }
     return nil;
+}
+
+- (NSDictionary<NSString *, id> *)dictionaryValue {
+    
+    NSDictionary<NSString *, id> *dictionary = [self dictionary];
+    return dictionary ? : @{};
 }
 
 
@@ -139,6 +129,12 @@
 - (int)intValue {
     if ([self.value isKindOfClass:[NSNumber class]]) {
         return [self.value intValue];
+    } else if ([self.value isKindOfClass:[NSString class]]) {
+        NSScanner* scan = [NSScanner scannerWithString:self.value];
+        int val;
+        if ([scan scanInt:&val] && [scan isAtEnd]) {
+            return [self.value intValue];
+        }
     }
     return 0;
 }
@@ -146,6 +142,12 @@
 - (double)doubleValue {
     if ([self.value isKindOfClass:[NSNumber class]]) {
         return [self.value doubleValue];
+    } else if ([self.value isKindOfClass:[NSString class]]) {
+        NSScanner* scan = [NSScanner scannerWithString:self.value];
+        double val;
+        if ([scan scanDouble:&val] && [scan isAtEnd]) {
+            return [self.value doubleValue];
+        }
     }
     return 0;
 }
@@ -153,8 +155,27 @@
 - (float)floatValue {
     if ([self.value isKindOfClass:[NSNumber class]]) {
         return [self.value floatValue];
+    } else if ([self.value isKindOfClass:[NSString class]]) {
+        NSScanner* scan = [NSScanner scannerWithString:self.value];
+        float val;
+        if ([scan scanFloat:&val] && [scan isAtEnd]) {
+            return [self.value floatValue];
+        }
     }
     return 0;
+}
+
+- (BOOL)boolValue {
+    if ([self.value isKindOfClass:[NSNumber class]]) {
+        return [self.value boolValue];
+    } else if ([self.value isKindOfClass:[NSString class]]) {
+        NSScanner* scan = [NSScanner scannerWithString:self.value];
+        int val;
+        if ([scan scanInt:&val] && [scan isAtEnd]) {
+            return [self.value intValue] != 0;
+        }
+    }
+    return NO;
 }
 
 @end

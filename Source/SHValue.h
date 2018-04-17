@@ -14,20 +14,15 @@
 + (nonnull instancetype)value:(nullable id)object;
 
 // Optional
-@property (strong, nonatomic, nullable) NSArray<SHValue *> *array;
+@property (strong, nonatomic, nullable) NSArray<id> *array;
 
 // Non-optional
-@property (strong, nonatomic, nonnull) NSArray<SHValue *> *arrayValue;
-
-// Optional
-@property (strong, nonatomic, nullable) NSArray<id> *arrayObject;
+@property (strong, nonatomic, nonnull) NSArray<id> *arrayValue;
 
 
-@property (strong, nonatomic, nullable) NSDictionary<NSString *, SHValue *> *dictionary;
+@property (strong, nonatomic, nullable) NSDictionary<NSString *, id> *dictionary;
 
-@property (strong, nonatomic, nonnull) NSDictionary<NSString *, SHValue *> *dictionaryValue;
-
-@property (strong, nonatomic, nullable) NSDictionary<NSString *, id> *dictionaryObject;
+@property (strong, nonatomic, nonnull) NSDictionary<NSString *, id> *dictionaryValue;
 
 
 // Optional string
@@ -46,10 +41,13 @@
 
 @property (assign, nonatomic) float floatValue;
 
+@property (assign, nonatomic) BOOL boolValue;
+
 
 - (nonnull instancetype)objectAtIndexedSubscript:(NSUInteger)idx;
 - (void)setObject:(nonnull id)obj atIndexedSubscript:(NSUInteger)idx;
 - (nonnull instancetype)objectForKeyedSubscript:(nonnull id <NSCopying>)key;
 - (void)setObject:(nonnull id)obj forKeyedSubscript:(nonnull id <NSCopying>)key;
+
 
 @end
