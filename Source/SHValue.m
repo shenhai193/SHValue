@@ -10,8 +10,6 @@
 
 @interface SHValue()
 
-@property (strong, nonatomic) id value;
-
 @end
 
 @implementation SHValue
@@ -47,7 +45,6 @@
 }
 
 - (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key {}
-
 
 
 // MARK: - Array

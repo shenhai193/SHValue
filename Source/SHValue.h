@@ -13,6 +13,8 @@
 
 + (nonnull instancetype)value:(nullable id)object;
 
+@property (strong, nonatomic, nullable) id value;
+
 // Optional
 @property (strong, nonatomic, nullable) NSArray<id> *array;
 
