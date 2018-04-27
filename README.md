@@ -1,6 +1,6 @@
 # SHValue
 
-[![Travis CI](https://travis-ci.org/SwiftyJSON/SwiftyJSON.svg?branch=master)](https://travis-ci.org/SwiftyJSON/SwiftyJSON) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![CocoaPods](https://img.shields.io/cocoapods/v/SwiftyJSON.svg) ![Platform](https://img.shields.io/badge/platforms-iOS%208.0+%20%7C%20macOS%2010.10+%20%7C%20tvOS%209.0+%20%7C%20watchOS%202.0+-333333.svg)
+[![Travis CI](https://travis-ci.org/SwiftyJSON/SwiftyJSON.svg?branch=master)](https://github.com/shenhai193/SHValue) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/shenhai193/SHValue) ![CocoaPods](https://img.shields.io/cocoapods/v/SwiftyJSON.svg) ![Platform](https://img.shields.io/badge/platforms-iOS%208.0+%20%7C%20macOS%2010.10+%20%7C%20tvOS%209.0+%20%7C%20watchOS%202.0+-333333.svg)
 
 The safe way to deal with JSON data in Objective-C
 
@@ -35,7 +35,9 @@ NSString *name = [SHValue value:jsonDict][@"data"][2].string;
 
 NSString *str = SHVALUE(jsonDict)[@"a"][@"b"][@"c"][100].string;
 // The str is nil, but it won't crash. 
-// If you want it to be a string and not nil, you should use stringvValue.
+
+NSString *str = SHVALUE(jsonDict)[@"a"][@"b"][@"c"][100].stringValue;  // str is ""
+// If you want it to be a string and not nil, you should use stringValue.
 
 ```
 Don't worry about the access to cross-border issues. It's done for you automatically and safely.
