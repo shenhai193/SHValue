@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+@class SHValue;
 
-@interface SHValue : NSObject
+FOUNDATION_EXPORT SHValue *SHVALUE(id object);
 
+
+@interface SHValue<__covariant T> : NSObject
 
 + (nonnull instancetype)value:(nullable id)object;
 
-@property (strong, nonatomic, nullable) id value;
+@property (strong, nonatomic, nullable) T value;
 
 // Optional
 @property (strong, nonatomic, nullable) NSArray<id> *array;

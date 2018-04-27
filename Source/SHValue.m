@@ -8,6 +8,11 @@
 
 #import "SHValue.h"
 
+SHValue *SHVALUE(id object) {
+    return [SHValue value: object];
+}
+
+
 @interface SHValue()
 
 @end
