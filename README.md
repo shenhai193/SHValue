@@ -26,13 +26,28 @@ With SHValue all you have to do is:
 
 ```Objective-C
 NSDictionary *jsonDict = @{@"data": @[@{}, @{}, @{@"name": @"A"}]};
-NSString *name = [SHValue value:jsonDict][@"data"][2].string;
+NSString *name = SHVALUE(jsonDict)[@"data"][2].string;
 // There's our name
 
-NSString *str = [SHValue value:jsonDict][@"a"][@"b"][@"c"][100].string;
-// str is nil, but it won't crash.
+// or 
+NSString *name = [SHValue value:jsonDict][@"data"][2].string;
+
+
+NSString *str = SHVALUE(jsonDict)[@"a"][@"b"][@"c"][100].string;
+// The str is nil, but it won't crash. 
+// If you want it to be a string and not nil, you should use stringvValue.
+
 ```
 Don't worry about the access to cross-border issues. It's done for you automatically and safely.
+
+
+It supports generics at the same time. The T is custom class.
+
+```Objective-C
+T *t = [SHValue<T> value:obj][@"a"][@"b"][100].value;
+
+```
+
 
 
 The string perproty is nullable (Optional), stringValue is Non-optional string.
