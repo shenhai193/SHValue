@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SHValue"
-  s.version      = "1.0.0"
+  s.version      = "1.3.0"
   s.summary      = "The safe way to deal with JSON data in Objective-C."
   s.homepage     = "https://github.com/shenhai193/SHValue"
   s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
