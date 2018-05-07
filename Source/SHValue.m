@@ -100,6 +100,8 @@ SHValue *SHVALUE(id object) {
 - (NSString *)string {
     if ([self.value isKindOfClass:[NSString class]]) {
         return self.value;
+    } else if ([self.value isKindOfClass:[NSNumber class]]) {
+        return ((NSNumber *)self.value).stringValue;
     }
     return nil;
 }
@@ -107,6 +109,8 @@ SHValue *SHVALUE(id object) {
 - (NSString *)stringValue {
     if ([self.value isKindOfClass:[NSString class]]) {
         return self.value;
+    } else if ([self.value isKindOfClass:[NSNumber class]]) {
+        return ((NSNumber *)self.value).stringValue;
     }
     return @"";
 }
