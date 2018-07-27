@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class SHValue;
 
-FOUNDATION_EXPORT SHValue *SHVALUE(id object);
+FOUNDATION_EXPORT SHValue *SHVALUE(_Nonnull id object);
 
 
 @interface SHValue<__covariant T> : NSObject

@@ -8,7 +8,7 @@
 
 #import "SHValue.h"
 
-SHValue *SHVALUE(id object) {
+SHValue *SHVALUE(_Nonnull id object) {
     return [SHValue value: object];
 }
 
